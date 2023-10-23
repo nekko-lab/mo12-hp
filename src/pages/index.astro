@@ -6,7 +6,7 @@ import Card from '../components/Card.astro';
 import miku from '../images/miku-standing-picture.png';
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-pt-20">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -15,30 +15,30 @@ import miku from '../images/miku-standing-picture.png';
 		<title>Astro</title>
 	</head>
 	<body>
-		<header class="flex items-center justify-between bg-secondary text-primary">
+		<header class="flex items-center justify-between p-2 bg-secondary text-primary sticky top-0">
 			<div class="flex item-center">
-				<a href="#">	
+				<a href="#">
 					<div class="text-2xl">Miku'sOrigin</div>
 				</a>
 			</div>
 			<div class="flex items-center justify-between text-2xl">
 				<div>
-					<a href="#">
+					<a href="#about">
 						<div class="mx-5">ABOUT</div>
 					</a>
 				</div>
 				<div>
-					<a href="#">
+					<a href="#live_info">
 						<div class="mx-5">LIVE INFO</div>
 					</a>
 				</div>
 				<div>
-					<a href="#">
+					<a href="#venue">
 						<div class="mx-5">VENUE</div>
 					</a>
 				</div>
 				<div>
-					<a href="#">
+					<a href="#attention">
 						<div class="mx-5">ATTENTION</div>
 					</a>
 				</div>
@@ -67,15 +67,17 @@ import miku from '../images/miku-standing-picture.png';
 					<div class="text-6xl text-right">Miku'sOrigin</div>
 					<div class="text-4xl text-right mt-3">at 津田沼祭</div>
 				</h1>
-				<Image src={miku} alt="初音ミクの立ち絵" class="w-[600px] mt-5" />
+				<Image src={miku} alt="初音ミクの立ち絵" class="w-[600px] my-5" />
 			</div>
 			<!-- Description -->
-			<Card title="ABOUT">
-				<div class="mt-20 text-center">「ここにかっこいい言葉」</div>
-				<p class="mt-20 text-center">あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
+			<Card title="ABOUT" id="about">
+				<div class="mt-20 text-center text-3xl">「ここにかっこいい言葉」</div>
+				<p class="mt-20 text-center text-xl">
+					あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+				</p>
 			</Card>
-			<Card title="LIVE INFO">
-				<div class="mt-20 text-center">千葉工業大学 津田沼祭での開催です。</div>
+			<Card title="LIVE INFO" id="live_info">
+				<div class="mt-20 text-center text-xl">千葉工業大学 津田沼祭での開催です。</div>
 				<div class="text-center mt-20">
 					<div class="flex justify-center">
 						<div class="mx-6">
@@ -93,57 +95,59 @@ import miku from '../images/miku-standing-picture.png';
 					</div>
 				</div>
 			</Card>
-			<Card title="VENUE">
-				<div class="mt-20 text-center">千葉工業大学 津田沼キャンパス 6号館 615教室</div>
-				<div class="mt-20">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d286.4244792417233!2d140.02046629201587!3d35.68874387717015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022802709cab4ed%3A0x206c9c7745731061!2z44CSMjc1LTAwMTYg5Y2D6JGJ55yM57-S5b-X6YeO5biC5rSl55Sw5rK877yS5LiB55uu77yR77yXIDblj7fppKgo6Kyb576p5qOfKQ!5e0!3m2!1sja!2sjp!4v1698064054723!5m2!1sja!2sjp" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			<Card title="VENUE" id="venue">
+				<div class="mt-20 text-center text-xl">千葉工業大学 津田沼キャンパス 6号館 1階 615教室</div>
+				<div class="mt-20 mb-20 flex justify-center">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d286.4244792417233!2d140.02046629201587!3d35.68874387717015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022802709cab4ed%3A0x206c9c7745731061!2z44CSMjc1LTAwMTYg5Y2D6JGJ55yM57-S5b-X6YeO5biC5rSl55Sw5rK877yS5LiB55uu77yR77yXIDblj7fppKgo6Kyb576p5qOfKQ!5e0!3m2!1sja!2sjp!4v1698064054723!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</div>
 			</Card>
-			<Card title="ATTENTION">
-				<div class="text-center">
-					ペンライトについて
-					<ul >
-						<li>発光量が極端に多いものの使用はご遠慮ください。</li>
-						<li>過度に振り回す等、周りのお客様に迷惑になる行為はご遠慮ください。</li>
-					</ul>
-					チケットについて
-					<ul >
-						<li>チケットの販売はございません。</li>
-					</ul>
-					入場・再入場について
-					<ul >
-						<li>本イベントは自由なタイミングで入退場が可能です。</li>
-					</ul>
-					座席について
-					<ul>
-						<li>座席の指定はございません。</li>
-					</ul>
-					撮影について
-					<ul >
-						<li>ライブ中の写真撮影や撮影した写真をSNS等アップロードすることは可能です。</li>
-						<li>ライブ中の録画・録音は禁止です。</li>
-						<li>特定の人物を撮影する場合は、本人の許可を得てください。</li>
-					</ul>
-					ライブ中について
-					<ul >
-						<li>会場内は大音量となりますのでご注意ください。</li>
-						<li>ライブ時間は全日1時間程度を予定しています。</li>
-					</ul>
-					コスプレについて
-					<ul >
-						<li>一般の方の更衣室の用意はありません。</li>
-					</ul>
-					喫煙・飲酒について
-					<ul >
-						<li>喫煙・飲酒は禁止です。</li>
-					</ul>
+			<Card title="ATTENTION" id="attention">
+				<div class="flex justify-center">
+					<div class="text-lg p-4 my-20 bg-white bg-opacity-10 rounded-lg">
+						<div class="">ペンライトについて</div>
+						<ul class="list-disc list-inside">
+							<li>発光量が極端に多いものの使用はご遠慮ください。</li>
+							<li>過度に振り回す等、周りのお客様に迷惑になる行為はご遠慮ください。</li>
+						</ul>
+						<div class="mt-6">チケットについて</div>
+						<ul class="list-disc list-inside">
+							<li>チケットの販売はございません。</li>
+						</ul>
+						<div class="mt-6">入場・再入場について</div>
+						<ul class="list-disc list-inside">
+							<li>本イベントは自由なタイミングで入退場が可能です。</li>
+						</ul>
+						<div class="mt-6">座席について</div>
+						<ul class="list-disc list-inside">
+							<li>座席の指定はございません。</li>
+						</ul>
+						<div class="mt-6">撮影について</div>
+						<ul class="list-disc list-inside">
+							<li>ライブ中の写真撮影や撮影した写真をSNS等アップロードすることは可能です。</li>
+							<li>ライブ中の録画・録音は禁止です。</li>
+							<li>特定の人物を撮影する場合は、本人の許可を得てください。</li>
+						</ul>
+						<div class="mt-6">ライブ中について</div>
+						<ul class="list-disc list-inside">
+							<li>会場内は大音量となりますのでご注意ください。</li>
+							<li>ライブ時間は全日1時間程度を予定しています。</li>
+						</ul>
+						<div class="mt-6">コスプレについて</div>
+						<ul class="list-disc list-inside">
+							<li>一般の方の更衣室の用意はありません。</li>
+						</ul>
+						<div class="mt-6">喫煙・飲酒について</div>
+						<ul class="list-disc list-inside">
+							<li>喫煙・飲酒は禁止です。</li>
+						</ul>
+					</div>
 				</div>
 			</Card>
 		</main>
 		<footer class="bg-secondary text-primary">
-			<div class="text-center py-5">
-				<p class="text-sm">このイベントはピアプロ・キャラクター・ライセンスに基づき、クリプトン・フューチャー・メディア株式会社のキャラクター「初音ミク、鏡音リン・レン、巡音ルカ」を描いたものです。<br>公式のイベントとは一切関係ありません。</p>
-				<p class="text-sm mt-1">Copyright © 2023 ネットワークコンテンツ研究会 . All Rights Reserved.</p>
+			<div class="text-center py-6">
+				<p class="text-xs">このイベントはピアプロ・キャラクター・ライセンスに基づき、クリプトン・フューチャー・メディア株式会社のキャラクター「初音ミク、鏡音リン・レン、巡音ルカ」を描いたものです。<br>公式のイベントとは一切関係ありません。</p>
+				<p class="text-xs mt-2">Copyright © 2023 ネットワークコンテンツ研究会 . All Rights Reserved.</p>
 			</div>
 		</footer>
 	</body>
