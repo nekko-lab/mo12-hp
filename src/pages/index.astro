@@ -14,14 +14,14 @@ import miku from '../images/miku-standing-picture.png';
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
-	<body>
-		<header class="flex items-center justify-between p-2 bg-secondary text-primary sticky top-0">
+	<body class="">
+		<header class="flex items-center justify-between p-2 bg-secondary text-primary sticky top-0 z-10">
 			<div class="flex item-center">
 				<a href="/">
 					<div class="text-2xl">Miku'sOrigin</div>
 				</a>
 			</div>
-			<div class="flex items-center justify-between text-2xl">
+			<div class="hidden lg:flex items-center justify-between text-2xl">
 				<div>
 					<a href="#about">
 						<div class="mx-5">ABOUT</div>
@@ -63,11 +63,11 @@ import miku from '../images/miku-standing-picture.png';
 		<main class="bg-primary text-primary">
 			<!-- Top -->
 			<div class="flex justify-center">
-				<h1 class="mt-[300px] mr-8">
+				<h1 class="mt-[300px] mr-8 absolute lg:static z-0">
 					<div class="text-6xl text-right">Miku'sOrigin</div>
 					<div class="text-4xl text-right mt-3">at 津田沼祭</div>
 				</h1>
-				<Image src={miku} alt="初音ミクの立ち絵" class="w-[600px] my-5" />
+				<Image src={miku} alt="初音ミクの立ち絵" class="w-[600px] my-5 px-4" />
 			</div>
 			<!-- Description -->
 			<Card title="ABOUT" id="about">
@@ -79,16 +79,16 @@ import miku from '../images/miku-standing-picture.png';
 			<Card title="LIVE INFO" id="live_info">
 				<div class="mt-20 text-center text-xl">千葉工業大学 津田沼祭での開催です。</div>
 				<div class="text-center mt-20">
-					<div class="flex justify-center">
-						<div class="mx-6">
+					<div class="static lg:flex justify-center">
+						<div class="m-6">
 							<p>DAY 1</p>
 							<p>11/18(土) 13:00～</p>
 						</div>
-						<div class="mx-6">
+						<div class="m-6">
 							<p>DAY 2</p>
 							<p>11/19(日) 13:00～</p>
 						</div>
-						<div class="mx-6">
+						<div class="m-6">
 							<p>DAY 3</p>
 							<p>11/20(月) 13:00～</p>
 						</div>
@@ -97,8 +97,8 @@ import miku from '../images/miku-standing-picture.png';
 			</Card>
 			<Card title="VENUE" id="venue">
 				<div class="mt-20 text-center text-xl">千葉工業大学 津田沼キャンパス 6号館 1階 615教室</div>
-				<div class="mt-20 mb-20 flex justify-center">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d286.4244792417233!2d140.02046629201587!3d35.68874387717015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022802709cab4ed%3A0x206c9c7745731061!2z44CSMjc1LTAwMTYg5Y2D6JGJ55yM57-S5b-X6YeO5biC5rSl55Sw5rK877yS5LiB55uu77yR77yXIDblj7fppKgo6Kyb576p5qOfKQ!5e0!3m2!1sja!2sjp!4v1698064054723!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<div class="flex justify-center mt-20 mb-20">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d286.4244792417233!2d140.02046629201587!3d35.68874387717015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022802709cab4ed%3A0x206c9c7745731061!2z44CSMjc1LTAwMTYg5Y2D6JGJ55yM57-S5b-X6YeO5biC5rSl55Sw5rK877yS5LiB55uu77yR77yXIDblj7fppKgo6Kyb576p5qOfKQ!5e0!3m2!1sja!2sjp!4v1698064054723!5m2!1sja!2sjp" width="600" height="450" style="border:0;" class="" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</div>
 			</Card>
 			<Card title="ATTENTION" id="attention">
