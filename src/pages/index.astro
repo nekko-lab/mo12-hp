@@ -3,9 +3,12 @@ import {Image} from 'astro:assets';
 
 import Card from '../components/Card.astro';
 import Day from '../components/Day.astro';
+import Organizer from '../components/Organizer.astro';
 
 import miku from '../images/miku-standing-picture.png';
-import logo from '../images/mikusorigin-logo.png'
+import logo from '../images/mikusorigin-logo.png';
+import icon_nclab from '../images/icon_ncl.webp';
+import icon_arpeggio from '../images/icon_arpeggio.webp';
 ---
 
 <html lang="en" class="scroll-pt-20">
@@ -166,6 +169,20 @@ import logo from '../images/mikusorigin-logo.png'
 						</ul>
 					</div>
 				</div>
+			</Card>
+			<Card title="ORGANIZER"	id="organizer">
+				<Organizer
+					title="主催"
+					icon={icon_nclab}
+					organizer="Miku’s Origin ネットワークコンテンツ研究会"
+					message="「Miku’s Origin」から「ネットワークコンテンツ研究会」と改名してから初めてのライブイベントとなりました。 今回のライブでは、観客の皆様がいるからこそ楽しめる要素をいくつか取り入れています。 これからも皆様に楽しんでいただけるようなライブ制作を目指しておりますので是非ご参加くださいませ！"
+				/>
+				<Organizer
+					title="特別協力"
+					icon={icon_arpeggio}
+					organizer="同志社大学VOCALOID研究会Arpeggio"
+					message="同志社大学VOCALOID研究会Arpeggioは、ボーカロイドを中心にあらゆる創作活動を行っているサークルです！今回のライブでは、楽曲制作とモーションキャプチャーで携わらせていただきました。みなさんがミクたちと一緒に楽しめる、最高のライブになりますように……。"
+				/>
 			</Card>
 		</main>
 		<footer class="bg-secondary text-primary">
