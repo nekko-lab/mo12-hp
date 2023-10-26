@@ -5,6 +5,7 @@ import Card from '../components/Card.astro';
 import Day from '../components/Day.astro';
 
 import miku from '../images/miku-standing-picture.png';
+import logo from '../images/mikusorigin-logo.png'
 ---
 
 <html lang="en" class="scroll-pt-20">
@@ -64,11 +65,10 @@ import miku from '../images/miku-standing-picture.png';
 		<main class="bg-primary text-primary">
 			<!-- Top -->
 			<div class="flex justify-center">
-				<h1 class="mt-[300px] mr-8 absolute lg:static z-0">
-					<div class="text-6xl text-right">Miku'sOrigin</div>
-					<div class="text-4xl text-right mt-3">at 津田沼祭</div>
+				<h1 class="mt-[300px] mr-8 absolute xl:static z-0">
+					<Image src={logo} alt="Miku'sOrigin at 津田沼祭2023" id="logo" class="w-[700px]" />
 				</h1>
-				<Image src={miku} alt="初音ミクの立ち絵" id="miku" class="w-[600px] my-5 px-4" />
+				<Image src={miku} alt="初音ミクの立ち絵" id="miku" class="w-[700px] my-5 px-4" />
 				<script>
 					import {gsap} from 'gsap';
 
@@ -78,6 +78,18 @@ import miku from '../images/miku-standing-picture.png';
 						autoAlpha: 0
 					});
 					gsap.to('#miku', {
+						x: 0,
+						y: 0,
+						duration: 0.6,
+						autoAlpha: 1
+					});
+
+					gsap.set('#logo', {
+						x: -100,
+						y: 0,
+						autoAlpha: 0
+					});
+					gsap.to('#logo', {
 						x: 0,
 						y: 0,
 						duration: 0.6,
