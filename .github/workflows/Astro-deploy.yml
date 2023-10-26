@@ -14,6 +14,9 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  BASE: /mo12-hp
+
 jobs:
   build:
     runs-on: ubuntu-latest
