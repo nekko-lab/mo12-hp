@@ -2,6 +2,7 @@
 import {Image} from 'astro:assets';
 
 import Card from '../components/Card.astro';
+import Day from '../components/Day.astro';
 
 import miku from '../images/miku-standing-picture.png';
 ---
@@ -80,18 +81,9 @@ import miku from '../images/miku-standing-picture.png';
 				<div class="mt-20 text-center text-xl">千葉工業大学 津田沼祭での開催です。</div>
 				<div class="text-center mt-20">
 					<div class="static lg:flex justify-center">
-						<div class="m-6">
-							<p>DAY 1</p>
-							<p>11/18(土) 13:00～</p>
-						</div>
-						<div class="m-6">
-							<p>DAY 2</p>
-							<p>11/19(日) 13:00～</p>
-						</div>
-						<div class="m-6">
-							<p>DAY 3</p>
-							<p>11/20(月) 13:00～</p>
-						</div>
+						<Day day="1" time1="11/18(土) 14:20" time2="11/18(土) 14:40"></Day>
+						<Day day="2" time1="11/19(日) 14:20" time2="11/19(日) 14:40"></Day>
+						<Day day="3" time1="11/20(月) 14:40" time2="11/20(月) 15:00"></Day>
 					</div>
 				</div>
 			</Card>
