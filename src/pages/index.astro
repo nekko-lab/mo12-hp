@@ -71,6 +71,38 @@ import icon_arpeggio from '../images/icon_arpeggio.webp';
 			</div>
 		</header>
 		<main class="bg-primary text-primary">
+			<div class="w-[400px] h-[400px] bg-[#FFD6A5] rounded-full absolute top-0 left-0" id="cloud-1" style="filter: blur(300px);"></div>
+			<div class="w-[400px] h-[400px] bg-[#A5FFE1] rounded-full absolute bottom-0 right-0" id="cloud-2" style="filter: blur(300px);"></div>
+			<script>
+				import {gsap} from 'gsap';
+				
+				// カーソルに合わせてclip-pathの位置を変更する
+				// https://gsap.com/community/forums/topic/33156-objects-interact-with-mouse-move/
+				
+				document.addEventListener('mousemove', function (e) {
+					const depth = 3;
+					const moveX = -((e.pageX)-(window.innerWidth/2))/depth;
+					const moveY = -((e.pageY)-(window.innerHeight/2))/depth;
+
+					gsap.to('#cloud-1', {
+						duration: 1,
+						x: moveX,
+						y: moveY,
+						ease: "slow",
+						stagger: 0.008,
+						overwrite: true
+					});
+
+					gsap.to('#cloud-2', {
+						duration: 1,
+						x: moveX,
+						y: moveY,
+						ease: "slow",
+						stagger: 0.008,
+						overwrite: true
+					});
+				});
+			</script>
 			<!-- Top -->
 			<div class="flex justify-center">
 				<h1 class="mt-[300px] mr-8 absolute xl:static z-20">
