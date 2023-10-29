@@ -1,18 +1,22 @@
 # MO12-HP
 
 ## デプロイ方法
+
 ### ローカルに開発環境を作成
+
 ```
 git clone https://github.com/cit-nclab/mo12-hp.git
 npm install
 ```
 
 ### 開発用サーバーの起動
+
 ```
 npm run dev
 ```
 
 ### ページにアクセス
+
 ```
 http://localhost:4321/
 ```

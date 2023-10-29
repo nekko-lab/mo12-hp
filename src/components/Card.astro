@@ -1,19 +1,21 @@
 ---
 interface Props {
-    title: string;
-    id: string;
+  title: string;
+  id: string;
 }
 
 const { title, id } = Astro.props;
 ---
 
 <div class="flex min-h-[600px] border-t" id={id}>
-    <div class="px-2 py-3 lg:p-5 border-r">
-        <h2 class="text-3xl lg:text-6xl" style="writing-mode: vertical-rl;">{title}</h2>
+  <div class="border-r px-2 py-3 lg:p-5">
+    <h2 class="text-3xl lg:text-6xl" style="writing-mode: vertical-rl;">
+      {title}
+    </h2>
+  </div>
+  <div class="flex w-full justify-center border-r">
+    <div class="mx-4 my-20 w-full max-w-3xl">
+      <slot />
     </div>
-    <div class="w-full flex justify-center border-r">
-        <div class="w-full max-w-3xl mx-4 my-20">
-            <slot />
-        </div>
-    </div>
+  </div>
 </div>

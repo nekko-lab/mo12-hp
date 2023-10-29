@@ -1,257 +1,345 @@
 ---
-import {Image} from 'astro:assets';
+import { Image } from "astro:assets";
 
-import Card from '../components/Card.astro';
-import Day from '../components/Day.astro';
-import Organizer from '../components/Organizer.astro';
+import Card from "../components/Card.astro";
+import Day from "../components/Day.astro";
+import Organizer from "../components/Organizer.astro";
 
-import miku from '../images/miku-standing-picture.png';
-import logo from '../images/mikusorigin-logo.png';
-import icon_nclab from '../images/icon_ncl.webp';
-import icon_arpeggio from '../images/icon_arpeggio.webp';
+import { gsap } from "gsap";
+import icon_arpeggio from "../images/icon_arpeggio.webp";
+import icon_nclab from "../images/icon_ncl.webp";
+import miku from "../images/miku-standing-picture.png";
+import logo from "../images/mikusorigin-logo.png";
 ---
 
-<html lang="en" class="scroll-pt-20 w-full h-full">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Miku'sOrigin at 津田沼祭2023</title>
-	</head>
-	<body class="w-full h-full relative -z-20 bg-primary text-primary">
-		<div class="">
-			<div class="w-[400px] h-[400px] bg-[#FFD6A5] rounded-full absolute top-0 left-0 -z-10" id="cloud-1" style="filter: blur(300px);"></div>
-			<div class="w-[400px] h-[400px] bg-[#A5FFE1] rounded-full absolute bottom-0 right-0 -z-10" id="cloud-2" style="filter: blur(300px);"></div>
-		</div>
-		<script>
-			import {gsap} from 'gsap';
-			
-			// カーソルに合わせてclip-pathの位置を変更する
-			// https://gsap.com/community/forums/topic/33156-objects-interact-with-mouse-move/
-			
-			document.addEventListener('mousemove', function (e) {
-				const depth = 3;
-				const moveX = -((e.pageX)-(window.innerWidth/2))/depth;
-				const moveY = -((e.pageY)-(window.innerHeight/2))/depth;
+<html lang="en" class="h-full w-full scroll-pt-20">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Miku'sOrigin at 津田沼祭2023</title>
+  </head>
+  <body class="relative -z-20 h-full w-full bg-primary text-primary">
+    <div class="">
+      <div
+        class="absolute left-0 top-0 -z-10 h-[400px] w-[400px] rounded-full bg-[#FFD6A5]"
+        id="cloud-1"
+        style="filter: blur(300px);"
+      >
+      </div>
+      <div
+        class="absolute bottom-0 right-0 -z-10 h-[400px] w-[400px] rounded-full bg-[#A5FFE1]"
+        id="cloud-2"
+        style="filter: blur(300px);"
+      >
+      </div>
+    </div>
+    <script>
+      // カーソルに合わせてclip-pathの位置を変更する
+      // https://gsap.com/community/forums/topic/33156-objects-interact-with-mouse-move/
 
-				gsap.to('#cloud-1', {
-					duration: 1,
-					x: moveX,
-					y: moveY,
-					ease: "slow",
-					stagger: 0.008,
-					overwrite: true
-				});
+      document.addEventListener("mousemove", function (e) {
+        const depth = 3;
+        const moveX = -(e.pageX - window.innerWidth / 2) / depth;
+        const moveY = -(e.pageY - window.innerHeight / 2) / depth;
 
-				gsap.to('#cloud-2', {
-					duration: 1,
-					x: moveX,
-					y: moveY,
-					ease: "slow",
-					stagger: 0.008,
-					overwrite: true
-				});
-			});
-		</script>
-		<div class="w-full h-full overflow-y-scroll">
-			<div class="w-full h-full relative z-0">
-		<header class="flex items-center justify-between p-2 bg-secondary text-primary sticky top-0 z-50">
-			<div class="flex item-center">
-				<a href="/">
-					<div class="text-2xl">Miku'sOrigin</div>
-				</a>
-			</div>
-			<div class="hidden lg:flex items-center justify-between text-2xl">
-				<div>
-					<a href="#about">
-						<div class="mx-5">ABOUT</div>
-					</a>
-				</div>
-				<div>
-					<a href="#live_info">
-						<div class="mx-5">LIVE INFO</div>
-					</a>
-				</div>
-				<div>
-					<a href="#venue">
-						<div class="mx-5">VENUE</div>
-					</a>
-				</div>
-				<div>
-					<a href="#attention">
-						<div class="mx-5">ATTENTION</div>
-					</a>
-				</div>
-				<div>
-					<a href="#organizer">
-						<div class="mx-5">ORGANIZER</div>
-					</a>
-				</div>
-				<div>
-					<a href="#news">
-						<div class="mx-5">NEWS</div>
-					</a>
-				</div>
-			</div>
-			<div class="flex items-center">
-				<div>
-					<a href="https://www.youtube.com/@mikusorigin6879" target="_blank">
-						<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 mx-1" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
-						</svg>
-					</a>
-				</div>
-				<div>
-					<a href="https://twitter.com/CIT_VLLab" target="_blank">
-						<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-1" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
-						</svg>
-					</a>
-				</div>
-			</div>
-		</header>
-			<main class="">
-			<!-- Top -->
-			<div class="flex justify-center bg-[url('/main-bg.png')] bg-no-repeat bg-cover">
-				<h1 class="mt-[300px] mr-8 absolute xl:static z-20">
-					<Image src={logo} alt="Miku'sOrigin at 津田沼祭2023" id="logo" class="w-[700px]" />
-				</h1>
-				<Image src={miku} alt="初音ミクの立ち絵" id="miku" class="w-[700px] my-5 px-4 z-10" />
-				<script>
-					import {gsap} from 'gsap';
+        gsap.to("#cloud-1", {
+          duration: 1,
+          x: moveX,
+          y: moveY,
+          ease: "slow",
+          stagger: 0.008,
+          overwrite: true,
+        });
 
-					gsap.set('#miku', {
-						x: 0,
-						y: 200,
-						autoAlpha: 0
-					});
-					gsap.to('#miku', {
-						x: 0,
-						y: 0,
-						duration: 0.6,
-						autoAlpha: 1
-					});
+        gsap.to("#cloud-2", {
+          duration: 1,
+          x: moveX,
+          y: moveY,
+          ease: "slow",
+          stagger: 0.008,
+          overwrite: true,
+        });
+      });
+    </script>
+    <div class="h-full w-full overflow-y-scroll">
+      <div class="relative z-0 h-full w-full">
+        <header
+          class="sticky top-0 z-50 flex items-center justify-between bg-secondary p-2 text-primary"
+        >
+          <div class="item-center flex">
+            <a href="/">
+              <div class="text-2xl">Miku'sOrigin</div>
+            </a>
+          </div>
+          <div class="hidden items-center justify-between text-2xl lg:flex">
+            <div>
+              <a href="#about">
+                <div class="mx-5">ABOUT</div>
+              </a>
+            </div>
+            <div>
+              <a href="#live_info">
+                <div class="mx-5">LIVE INFO</div>
+              </a>
+            </div>
+            <div>
+              <a href="#venue">
+                <div class="mx-5">VENUE</div>
+              </a>
+            </div>
+            <div>
+              <a href="#attention">
+                <div class="mx-5">ATTENTION</div>
+              </a>
+            </div>
+            <div>
+              <a href="#organizer">
+                <div class="mx-5">ORGANIZER</div>
+              </a>
+            </div>
+            <div>
+              <a href="#news">
+                <div class="mx-5">NEWS</div>
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div>
+              <a
+                href="https://www.youtube.com/@mikusorigin6879"
+                target="_blank"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="mx-1 h-7 w-7"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div>
+              <a href="https://twitter.com/CIT_VLLab" target="_blank">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="mx-1 h-6 w-6"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </header>
+        <main class="">
+          <!-- Top -->
+          <div
+            class="flex justify-center bg-[url('/main-bg.png')] bg-cover bg-no-repeat"
+          >
+            <h1 class="absolute z-20 mr-8 mt-[300px] xl:static">
+              <Image
+                src={logo}
+                alt="Miku'sOrigin at 津田沼祭2023"
+                id="logo"
+                class="w-[700px]"
+              />
+            </h1>
+            <Image
+              src={miku}
+              alt="初音ミクの立ち絵"
+              id="miku"
+              class="z-10 my-5 w-[700px] px-4"
+            />
+            <script>
+              gsap.set("#miku", {
+                x: 0,
+                y: 200,
+                autoAlpha: 0,
+              });
+              gsap.to("#miku", {
+                x: 0,
+                y: 0,
+                duration: 0.6,
+                autoAlpha: 1,
+              });
 
-					gsap.set('#logo', {
-						x: -100,
-						y: 0,
-						autoAlpha: 0
-					});
-					gsap.to('#logo', {
-						x: 0,
-						y: 0,
-						duration: 0.6,
-						autoAlpha: 1
-					});
-				</script>
-			</div>
-			<!-- Description -->
-			<div class="flex">
-				<div class="w-full">
-			<Card title="ABOUT" id="about">
-				<div class="mt-20 text-center text-4xl">『最高にカワイイ！みんなの歌姫』</div>
-				<p class="mt-20 text-center text-xl">
-					「Miku's Origin」は、ネットワークコンテンツ研究会 Miku's Origin チームが贈るVOCALOID達のファンメイドライブです。
-					今回のテーマは「サイバーアイドル」です！<br>
-					最高にカワイイ、前回よりパワーアップしたミク達をぜひご覧ください！
-				</p>
-			</Card>
-			<Card title="LIVE INFO" id="live_info">
-				<div class="text-center text-xl">千葉工業大学 津田沼祭での開催です。</div>
-				<div class="text-center mt-20">
-					<div class="static lg:flex justify-center">
-						<Day day="1" time1="11/18(土) 14:20" time2="11/18(土) 14:40"></Day>
-						<Day day="2" time1="11/19(日) 14:20" time2="11/19(日) 14:40"></Day>
-						<Day day="3" time1="11/20(月) 14:40" time2="11/20(月) 15:00"></Day>
-					</div>
-				</div>
-			</Card>
-			<Card title="VENUE" id="venue">
-				<div class="text-center text-xl">千葉工業大学 津田沼キャンパス 6号館 1階 615教室</div>
-				<div class="w-full mt-20">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d286.4244792417233!2d140.02046629201587!3d35.68874387717015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022802709cab4ed%3A0x206c9c7745731061!2z44CSMjc1LTAwMTYg5Y2D6JGJ55yM57-S5b-X6YeO5biC5rSl55Sw5rK877yS5LiB55uu77yR77yXIDblj7fppKgo6Kyb576p5qOfKQ!5e0!3m2!1sja!2sjp!4v1698064054723!5m2!1sja!2sjp" style="border:0;" class="w-full h-96" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-				</div>
-			</Card>
-			<Card title="ATTENTION" id="attention">
-				<!--<div class="flex justify-center">-->
-					<div class="w-full text-lg p-4 bg-white bg-opacity-10 rounded-lg">
-						<div class="">ペンライトについて</div>
-						<ul class="list-disc list-inside">
-							<li>発光量が極端に多いものの使用はご遠慮ください。</li>
-							<li>過度に振り回す等、周りのお客様に迷惑になる行為はご遠慮ください。</li>
-						</ul>
-						<div class="mt-6">チケットについて</div>
-						<ul class="list-disc list-inside">
-							<li>チケットの販売はございません。</li>
-						</ul>
-						<div class="mt-6">入場・再入場について</div>
-						<ul class="list-disc list-inside">
-							<li>本イベントは自由なタイミングで入退場が可能です。</li>
-						</ul>
-						<div class="mt-6">座席について</div>
-						<ul class="list-disc list-inside">
-							<li>座席の指定はございません。</li>
-						</ul>
-						<div class="mt-6">撮影について</div>
-						<ul class="list-disc list-inside">
-							<li>ライブ中の写真撮影や撮影した写真をSNS等アップロードすることは可能です。</li>
-							<li>ライブ中の録画・録音は禁止です。</li>
-							<li>特定の人物を撮影する場合は、本人の許可を得てください。</li>
-						</ul>
-						<div class="mt-6">ライブ中について</div>
-						<ul class="list-disc list-inside">
-							<li>会場内は大音量となりますのでご注意ください。</li>
-							<li>ライブ時間は全日1時間程度を予定しています。</li>
-						</ul>
-						<div class="mt-6">コスプレについて</div>
-						<ul class="list-disc list-inside">
-							<li>一般の方の更衣室の用意はありません。</li>
-						</ul>
-						<div class="mt-6">喫煙・飲酒について</div>
-						<ul class="list-disc list-inside">
-							<li>喫煙・飲酒は禁止です。</li>
-						</ul>
-						<div class="mt-6">その他</div>
-						<ul class="list-disc list-inside">
-							<li>生ネギの持ち込みはご遠慮ください。</li>
-							<li>本イベントはテロと暴力は禁止です。</li>
-						</ul>
-					</div>
-				<!--</div>-->
-			</Card>
-			<Card title="ORGANIZER"	id="organizer">
-				<Organizer
-					title="主催"
-					icon={icon_nclab}
-					organizer="Miku’s Origin ネットワークコンテンツ研究会"
-					message="「Miku’s Origin」から「ネットワークコンテンツ研究会」と改名してから初めてのライブイベントとなりました。 今回のライブでは、観客の皆様がいるからこそ楽しめる要素をいくつか取り入れています。 これからも皆様に楽しんでいただけるようなライブ制作を目指しておりますので是非ご参加くださいませ！"
-				/>
-				<Organizer
-					title="特別協力"
-					icon={icon_arpeggio}
-					organizer="同志社大学VOCALOID研究会Arpeggio"
-					message="同志社大学VOCALOID研究会Arpeggioは、ボーカロイドを中心にあらゆる創作活動を行っているサークルです！今回のライブでは、楽曲制作とモーションキャプチャーで携わらせていただきました。みなさんがミクたちと一緒に楽しめる、最高のライブになりますように……。"
-				/>
-			</Card>
-			<Card title="NEWS" id="news">
-				<div class="w-full">
-					<iframe src="https://syndication.twitter.com/srv/timeline-profile/screen-name/CIT_VLLab?dnt=false&embedId=twitter-widget-0&features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&frame=false&hideBorder=false&hideFooter=true&hideHeader=true&hideScrollBar=false&lang=ja&maxHeight=640px&origin=https%3A%2F%2Fmikusorigin.com%2Fsakura_no_enbu&sessionId=2a3b5c0eda5417d2e9f6d97572486dcd89249ddd&showHeader=false&showReplies=false&siteScreenName=CIT_VLLab&transparent=false&widgetsVersion=01917f4d1d4cb%3A1696883169554" style="border:0;" class="w-full h-[600px]" allowfullscreen="" scrolling="no" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-				</div>
-			</Card>
-				</div>
-				<div class="hidden lg:inline w-[100px] p-3 lg:p-5 border-t">
-					<!-- ここに右側の矢印？ -->
-				</div>
-			</div>
-			</main>
-		<footer class="bg-secondary text-primary">
-			<div class="text-center py-6">
-				<p class="text-xs">このイベントはピアプロ・キャラクター・ライセンスに基づき、クリプトン・フューチャー・メディア株式会社のキャラクター「初音ミク、鏡音リン・レン、巡音ルカ」を描いたものです。<br>公式のイベントとは一切関係ありません。</p>
-				<p class="text-xs mt-2">Copyright © 2023 ネットワークコンテンツ研究会 . All Rights Reserved.</p>
-			</div>
-		</footer>
-		</div>
-	</div>
-	</body>
+              gsap.set("#logo", {
+                x: -100,
+                y: 0,
+                autoAlpha: 0,
+              });
+              gsap.to("#logo", {
+                x: 0,
+                y: 0,
+                duration: 0.6,
+                autoAlpha: 1,
+              });
+            </script>
+          </div>
+          <!-- Description -->
+          <div class="flex">
+            <div class="w-full">
+              <Card title="ABOUT" id="about">
+                <div class="mt-20 text-center text-4xl">
+                  『最高にカワイイ！みんなの歌姫』
+                </div>
+                <p class="mt-20 text-center text-xl">
+                  「Miku's Origin」は、ネットワークコンテンツ研究会 Miku's
+                  Origin チームが贈るVOCALOID達のファンメイドライブです。
+                  今回のテーマは「サイバーアイドル」です！<br />
+                   最高にカワイイ、前回よりパワーアップしたミク達をぜひご覧ください！
+                </p>
+              </Card>
+              <Card title="LIVE INFO" id="live_info">
+                <div class="text-center text-xl">
+                  千葉工業大学 津田沼祭での開催です。
+                </div>
+                <div class="mt-20 text-center">
+                  <div class="static justify-center lg:flex">
+                    <Day
+                      day="1"
+                      time1="11/18(土) 14:20"
+                      time2="11/18(土) 14:40"
+                    />
+                    <Day
+                      day="2"
+                      time1="11/19(日) 14:20"
+                      time2="11/19(日) 14:40"
+                    />
+                    <Day
+                      day="3"
+                      time1="11/20(月) 14:40"
+                      time2="11/20(月) 15:00"
+                    />
+                  </div>
+                </div>
+              </Card>
+              <Card title="VENUE" id="venue">
+                <div class="text-center text-xl">
+                  千葉工業大学 津田沼キャンパス 6号館 1階 615教室
+                </div>
+                <div class="mt-20 w-full">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d286.4244792417233!2d140.02046629201587!3d35.68874387717015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022802709cab4ed%3A0x206c9c7745731061!2z44CSMjc1LTAwMTYg5Y2D6JGJ55yM57-S5b-X6YeO5biC5rSl55Sw5rK877yS5LiB55uu77yR77yXIDblj7fppKgo6Kyb576p5qOfKQ!5e0!3m2!1sja!2sjp!4v1698064054723!5m2!1sja!2sjp"
+                    style="border:0;"
+                    class="h-96 w-full"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </Card>
+              <Card title="ATTENTION" id="attention">
+                <!--<div class="flex justify-center">-->
+                <div
+                  class="w-full rounded-lg bg-white bg-opacity-10 p-4 text-lg"
+                >
+                  <div class="">ペンライトについて</div>
+                  <ul class="list-inside list-disc">
+                    <li>発光量が極端に多いものの使用はご遠慮ください。</li>
+                    <li>
+                      過度に振り回す等、周りのお客様に迷惑になる行為はご遠慮ください。
+                    </li>
+                  </ul>
+                  <div class="mt-6">チケットについて</div>
+                  <ul class="list-inside list-disc">
+                    <li>チケットの販売はございません。</li>
+                  </ul>
+                  <div class="mt-6">入場・再入場について</div>
+                  <ul class="list-inside list-disc">
+                    <li>本イベントは自由なタイミングで入退場が可能です。</li>
+                  </ul>
+                  <div class="mt-6">座席について</div>
+                  <ul class="list-inside list-disc">
+                    <li>座席の指定はございません。</li>
+                  </ul>
+                  <div class="mt-6">撮影について</div>
+                  <ul class="list-inside list-disc">
+                    <li>
+                      ライブ中の写真撮影や撮影した写真をSNS等アップロードすることは可能です。
+                    </li>
+                    <li>ライブ中の録画・録音は禁止です。</li>
+                    <li>
+                      特定の人物を撮影する場合は、本人の許可を得てください。
+                    </li>
+                  </ul>
+                  <div class="mt-6">ライブ中について</div>
+                  <ul class="list-inside list-disc">
+                    <li>会場内は大音量となりますのでご注意ください。</li>
+                    <li>ライブ時間は全日1時間程度を予定しています。</li>
+                  </ul>
+                  <div class="mt-6">コスプレについて</div>
+                  <ul class="list-inside list-disc">
+                    <li>一般の方の更衣室の用意はありません。</li>
+                  </ul>
+                  <div class="mt-6">喫煙・飲酒について</div>
+                  <ul class="list-inside list-disc">
+                    <li>喫煙・飲酒は禁止です。</li>
+                  </ul>
+                  <div class="mt-6">その他</div>
+                  <ul class="list-inside list-disc">
+                    <li>生ネギの持ち込みはご遠慮ください。</li>
+                    <li>本イベントはテロと暴力は禁止です。</li>
+                  </ul>
+                </div>
+                <!--</div>-->
+              </Card>
+              <Card title="ORGANIZER" id="organizer">
+                <Organizer
+                  title="主催"
+                  icon={icon_nclab}
+                  organizer="Miku’s Origin ネットワークコンテンツ研究会"
+                  message="「Miku’s Origin」から「ネットワークコンテンツ研究会」と改名してから初めてのライブイベントとなりました。 今回のライブでは、観客の皆様がいるからこそ楽しめる要素をいくつか取り入れています。 これからも皆様に楽しんでいただけるようなライブ制作を目指しておりますので是非ご参加くださいませ！"
+                />
+                <Organizer
+                  title="特別協力"
+                  icon={icon_arpeggio}
+                  organizer="同志社大学VOCALOID研究会Arpeggio"
+                  message="同志社大学VOCALOID研究会Arpeggioは、ボーカロイドを中心にあらゆる創作活動を行っているサークルです！今回のライブでは、楽曲制作とモーションキャプチャーで携わらせていただきました。みなさんがミクたちと一緒に楽しめる、最高のライブになりますように……。"
+                />
+              </Card>
+              <Card title="NEWS" id="news">
+                <div class="w-full">
+                  <iframe
+                    src="https://syndication.twitter.com/srv/timeline-profile/screen-name/CIT_VLLab?dnt=false&embedId=twitter-widget-0&features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&frame=false&hideBorder=false&hideFooter=true&hideHeader=true&hideScrollBar=false&lang=ja&maxHeight=640px&origin=https%3A%2F%2Fmikusorigin.com%2Fsakura_no_enbu&sessionId=2a3b5c0eda5417d2e9f6d97572486dcd89249ddd&showHeader=false&showReplies=false&siteScreenName=CIT_VLLab&transparent=false&widgetsVersion=01917f4d1d4cb%3A1696883169554"
+                    style="border:0;"
+                    class="h-[600px] w-full"
+                    allowfullscreen=""
+                    scrolling="no"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </Card>
+            </div>
+            <div class="hidden w-[100px] border-t p-3 lg:inline lg:p-5">
+              <!-- ここに右側の矢印？ -->
+            </div>
+          </div>
+        </main>
+        <footer class="bg-secondary text-primary">
+          <div class="py-6 text-center">
+            <p class="text-xs">
+              このイベントはピアプロ・キャラクター・ライセンスに基づき、クリプトン・フューチャー・メディア株式会社のキャラクター「初音ミク、鏡音リン・レン、巡音ルカ」を描いたものです。<br
+              />公式のイベントとは一切関係ありません。
+            </p>
+            <p class="mt-2 text-xs">
+              Copyright © 2023 ネットワークコンテンツ研究会 . All Rights
+              Reserved.
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
 </html>

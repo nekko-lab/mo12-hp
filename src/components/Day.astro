@@ -1,15 +1,15 @@
 ---
 interface Props {
-    day: string,
-    time1: string,
-    time2: string,
+  day: string;
+  time1: string;
+  time2: string;
 }
 
 const { day, time1, time2 } = Astro.props;
 ---
 
-<div class="m-3 px-6 py-8 rounded-xl bg-white bg-opacity-10">
-    <p class="text-3xl">DAY {day}</p>
-    <p class="text-xl mt-4">{time1} 開場</p>
-    <p class="text-xl mt-1">{time2} 開演</p>
+<div class="m-3 rounded-xl bg-white bg-opacity-10 px-6 py-8">
+  <p class="text-3xl">DAY {day}</p>
+  <p class="mt-4 text-xl">{time1} 開場</p>
+  <p class="mt-1 text-xl">{time2} 開演</p>
 </div>
