@@ -8,11 +8,11 @@ const { title, id } = Astro.props;
 ---
 
 <div class="flex min-h-[600px] border-t" id={id}>
-    <div class="w-[60px] lg:w-[100px] p-3 lg:p-5 border-r">
-        <h2 class="text-4xl lg:text-6xl" style="writing-mode: vertical-rl;">{title}</h2>
+    <div class="px-2 py-3 lg:p-5 border-r">
+        <h2 class="text-3xl lg:text-6xl" style="writing-mode: vertical-rl;">{title}</h2>
     </div>
     <div class="w-full flex justify-center border-r">
-        <div class="max-w-3xl m-4">
+        <div class="w-full max-w-3xl mx-4 my-20">
             <slot />
         </div>
     </div>
