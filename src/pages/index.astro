@@ -5,7 +5,6 @@ import Card from "../components/Card.astro";
 import Day from "../components/Day.astro";
 import Organizer from "../components/Organizer.astro";
 
-import { gsap } from "gsap";
 import icon_arpeggio from "../images/icon_arpeggio.webp";
 import icon_nclab from "../images/icon_ncl.webp";
 import miku from "../images/miku-standing-picture.png";
@@ -20,22 +19,24 @@ import logo from "../images/mikusorigin-logo.png";
     <meta name="generator" content={Astro.generator} />
     <title>Miku'sOrigin at 津田沼祭2023</title>
   </head>
-  <body class="relative -z-20 h-full w-full bg-primary text-primary">
-    <div class="">
-      <div
-        class="absolute left-0 top-0 -z-10 h-[400px] w-[400px] rounded-full bg-[#FFD6A5]"
-        id="cloud-1"
-        style="filter: blur(300px);"
-      >
-      </div>
-      <div
-        class="absolute bottom-0 right-0 -z-10 h-[400px] w-[400px] rounded-full bg-[#A5FFE1]"
-        id="cloud-2"
-        style="filter: blur(300px);"
-      >
-      </div>
+  <body
+    class="relative -z-20 h-full w-full overflow-hidden bg-primary text-primary"
+  >
+    <div
+      class="absolute left-0 top-0 -z-10 h-[400px] w-[400px] rounded-full bg-[#FFD6A5]"
+      id="cloud-1"
+      style="filter: blur(300px);"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-0 -z-10 h-[400px] w-[400px] rounded-full bg-[#A5FFE1]"
+      id="cloud-2"
+      style="filter: blur(300px);"
+    >
     </div>
     <script>
+      import { gsap } from "gsap";
+
       // カーソルに合わせてclip-pathの位置を変更する
       // https://gsap.com/community/forums/topic/33156-objects-interact-with-mouse-move/
 
@@ -146,7 +147,7 @@ import logo from "../images/mikusorigin-logo.png";
         <main class="">
           <!-- Top -->
           <div
-            class="flex justify-center bg-[url('/main-bg.png')] bg-cover bg-no-repeat"
+            class="relative -z-20 flex justify-center bg-[url('/main-bg.png')] bg-cover bg-no-repeat"
           >
             <h1 class="absolute z-20 mr-8 mt-[300px] xl:static">
               <Image
@@ -163,6 +164,8 @@ import logo from "../images/mikusorigin-logo.png";
               class="z-10 my-5 w-[700px] px-4"
             />
             <script>
+              import { gsap } from "gsap";
+
               gsap.set("#miku", {
                 x: 0,
                 y: 200,
