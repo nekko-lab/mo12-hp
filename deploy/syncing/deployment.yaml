@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: web
-          image: "ghcr.io/cit-nclab/mo12-hp:07ce659f9a994c2d4ecc1c28fc83107e29962d1d"
+          image: "ghcr.io/cit-nclab/mo12-hp:67f8742ac80babc80ce301cc4a65cc51ad225469"
