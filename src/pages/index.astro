@@ -12,7 +12,7 @@ import miku from "../images/miku-standing-picture.png";
 import logo from "../images/mikusorigin-logo.png";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL("/images/social_preview.png", Astro.site);
+const socialImageURL = new URL("/images/social_preview.png", Astro.url);
 ---
 
 <html lang="ja" class="h-full w-full scroll-pt-20">
