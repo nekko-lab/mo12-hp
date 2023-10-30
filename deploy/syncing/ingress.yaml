@@ -20,17 +20,17 @@ metadata:
 spec:
   # ingressClassName: nginx
   tls:
-  - hosts:
-    - "numasai2023.mikusorigin.com"
-    secretName: web-secret
+    - hosts:
+        - "numasai2023.mikusorigin.com"
+      secretName: web-secret
   rules:
-  - host: "numasai2023.mikusorigin.com"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: web-service
-            port:
-              number: 80
+    - host: "numasai2023.mikusorigin.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web-service
+                port:
+                  number: 80

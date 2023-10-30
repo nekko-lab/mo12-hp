@@ -9,7 +9,7 @@ const { title, id } = Astro.props;
 
 <div class="flex min-h-[600px] border-t" id={id}>
   <!-- Ipadでレイアウトが崩れるためwとhを固定 -->
-  <div class="border-r px-2 py-3 lg:p-5 w-[60px] lg:w-[108px]">
+  <div class="w-[60px] border-r px-2 py-3 lg:w-[108px] lg:p-5">
     <h2 class="text-3xl lg:text-6xl" style="writing-mode: vertical-rl;">
       {title}
     </h2>

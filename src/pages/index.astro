@@ -83,12 +83,12 @@ const socialImageURL = new URL("social_preview.png", Astro.url);
             <Image src={miku} alt="初音ミクの立ち絵" id="miku" class="z-10 my-5 w-[700px] px-4" />
             <script>
               import { gsap } from "gsap";
-              
-              const img = document.querySelector('img');
+
+              const img = document.querySelector("img");
               if (img.complete) {
                 onLoad();
               } else {
-                img.addEventListener('load', onLoad);
+                img.addEventListener("load", onLoad);
               }
 
               gsap.set("#miku", {
@@ -96,7 +96,7 @@ const socialImageURL = new URL("social_preview.png", Astro.url);
                 y: 200,
                 autoAlpha: 0,
               });
-              
+
               gsap.set("#logo", {
                 x: -100,
                 y: 0,
