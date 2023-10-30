@@ -1,4 +1,5 @@
 FROM node:lts AS build
+ENV SITE "https://numasai2023.mikusorigin.com/"
 WORKDIR /app
 COPY package*.json ./
 RUN npm install

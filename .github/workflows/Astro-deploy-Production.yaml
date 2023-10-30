@@ -6,9 +6,6 @@ on:
   #    - "main"
   workflow_dispatch:
 
-env:
-    SITE: https://numasai2023.mikusorigin.com/
-
 jobs:
   build:
     runs-on: ubuntu-latest
