@@ -16,6 +16,7 @@ permissions:
 
 env:
   BASE: /mo12-hp
+  SITE: https://cit-nclab.github.io/
 
 jobs:
   build:
