@@ -22,7 +22,7 @@ spec:
   tls:
   - hosts:
     - "numasai2023.mikusorigin.com"
-    secretName: numasai2023.mikusorigin.com
+    secretName: web-secret
   rules:
   - host: "numasai2023.mikusorigin.com"
     http:
