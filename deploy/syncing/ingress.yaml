@@ -15,14 +15,16 @@ kind: Ingress
 metadata:
   name: web-ingress
   annotations:
-    kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/issuer: "letsencrypt"
+    nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
+    nginx.ingress.kubernetes.io/auth-tls-secret: mo12-hp/cloudflare-tls-secret
+    nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
+    nginx.ingress.kubernetes.io/auth-tls-verify-depth: "1"
 spec:
-  # ingressClassName: nginx
+  ingressClassName: nginx
   tls:
     - hosts:
-        - "numasai2023.mikusorigin.com"
-      secretName: web-secret
+      - "mikusorigin.com"
+      secretName: cloudflare-origin-server
   rules:
     - host: "numasai2023.mikusorigin.com"
       http:

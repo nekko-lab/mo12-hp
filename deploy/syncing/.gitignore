@@ -1,1 +1,4 @@
 issuer.yaml
+*.crt
+*.key
+*.pem
